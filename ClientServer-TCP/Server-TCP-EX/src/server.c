@@ -3,8 +3,8 @@
  Name        : TCP-Client-Server.c
  Author      : Gianmarco Moresi
  Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Copyright   :
+ Description : Server TCP
  ============================================================================
  */
 
@@ -31,12 +31,14 @@ void ClearWinSock() {
 }
 
 int main(int argc, char *argv[]) {
-	#if defined WIN32 // initialize Winsock
-	WORD wVersionRequested = MAKEWORD(2,2);
-	WSADATA wsaData;
-	int wsastartup;
-	wsastartup = WSAStartup(wVersionRequested, &wsaData);
-	if (wsastartup != 0) printf("Errore WSAStartup()\n");
+	#if defined WIN32
+		WORD wVersionRequested = MAKEWORD(2,2);
+		WSADATA wsaData;
+		int wsastartup;
+		wsastartup = WSAStartup(wVersionRequested, &wsaData);
+		if (wsastartup != 0) {
+			printf("Errore con WSAStartup()\n");
+		}
 	#endif
 
 	int socketServer;
